@@ -32,8 +32,11 @@ function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)))
 }
 
-function elementosTerminadosCom(array, padraoTextual) {
-    return array.filter(el => el.endsWith(padraoTextual))
+function elementosTerminadosCom(padraoTextual) {
+    return function(array) {
+        return array.filter(el => el.endsWith(padraoTextual))
+    }
+
 }
 
 function removerElementosSeVazio(array) {
@@ -74,6 +77,23 @@ function separarTextoPor(simbolo) {
         return texto.split(simbolo)
     }
 }
+
+function agruparPalavras(palavras) {
+    return Object.values(palavras.reduce((acc, palavra) => {
+        const el = palavra.toLowerCase()
+        const qtde = acc[el] ? acc[el].qtde + 1 : 1
+        acc[el] = { elemento: el, qtde }
+        return acc
+    }, {}))
+}
+
+function ordenarPorAtribNumerico(attr, ordem = 'asc') {
+    return function(array) {
+        const asc = (o1, o2) => o1[attr] - o2[attr]
+        const desc = (o1, o2) => o2[attr] - o1[attr]
+        return array.sort(ordem === 'asc' ? asc : desc)
+    }
+}
 module.exports = {
     lerDiretorio,
     lerArquivo,
@@ -85,4 +105,6 @@ module.exports = {
     removerSimbolos,
     mesclarElementos,
     separarTextoPor,
+    agruparPalavras,
+    ordenarPorAtribNumerico,
 }
