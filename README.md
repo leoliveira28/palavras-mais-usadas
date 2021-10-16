@@ -1,5 +1,6 @@
 Pequeno projeto do curso de JavaScript reativo e funcional.
-Nesse projeto foram desenvolvidos varios mecanismos  basicos de como fazer um codigo mais funcional e os mecanismos que foram utilizados por exemplo foram:
+Nesse projeto foram desenvolvidos varios mecanismos  basicos de como fazer um codigo mais funcional.
+Os mecanismos que foram utilizados por exemplo foram:
 
 - Passar uma função como parametro para uma outra função
 - Conceitos de call-back 
